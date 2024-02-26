@@ -6,3 +6,22 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+
+
+[[bin]]
+name = "cargo_install"
+
+[[bin]]
+name = "hello_world"
+
+[[bin]]
+name = "basic_input"
+
+[[bin]]
+name = "control_flow"
+
+[[bin]]
+name = "control_flow_2"
+
+[[bin]]
+name = "guess_number"
