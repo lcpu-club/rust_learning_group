@@ -1,13 +1,14 @@
 //! Install cargo toolchain.
 
 /// Try run this program on your computer and expect something fancy printed!
+///
 /// 1. run `cargo build --bin cargo_install` to only build this binary.
 /// 2. run `cargo run --bin cargo_install` to only run this binary.
 fn main() {
     println!("{}", HELLO_MESSAGE);
 }
 
-const HELLO_MESSAGE: &'static str = r#"
+const HELLO_MESSAGE: &str = r#"
     +---+    +----------+ +-------------------+
     |   |   /           | |                   |
     |   |  |    +-------+ |    +--------+     +
