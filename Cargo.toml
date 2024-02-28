@@ -15,6 +15,9 @@ name = "cargo_install"
 name = "hello_world"
 
 [[bin]]
+name = "basics"
+
+[[bin]]
 name = "basic_input"
 
 [[bin]]
