@@ -1,0 +1,29 @@
+name: rustdoc
+on:
+  push:
+   branches:
+   - main
+  workflow_dispatch:
+
+jobs:
+  rustdoc:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install Rust toolchain
+      run: rustup update --no-self-update stable
+
+    - name: Build Documentation
+      run: cargo doc --all --no-deps
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: docs
+        publish_dir: ./target/doc
+        force_orphan: true
+        commit_message: ${{ github.event.head_commit.message }}
