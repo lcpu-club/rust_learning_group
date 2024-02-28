@@ -18,6 +18,12 @@ name = "hello_world"
 name = "basic_input"
 
 [[bin]]
+name = "basic_output"
+
+[[bin]]
+name = "hello_world_complex"
+
+[[bin]]
 name = "control_flow"
 
 [[bin]]
