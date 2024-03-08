@@ -43,7 +43,7 @@
 ///
 /// Rust also incorporates a `bool` type for Boolean values, which can either
 /// be `true` or `false`. Conditional expressions such as `if` and `while`
-/// necessitate a `bool` value.
+/// necessitate a `bool` value. 1 and 0 are not considered `true` and `false`.
 ///
 /// ```rust
 /// let t: bool = true;
@@ -97,7 +97,7 @@
 /// The prohibition of implicit conversion between different types is a design
 /// decision in Rust aimed at preventing bugs. This requirement encourages
 /// careful consideration of potential truncation, overflow, or loss of
-/// precision when converting between types.
+/// precision when casting between types. 
 ///
 /// When casting between integer types using `as`, Rust performs truncations
 /// and/or sign extensions. For instance, converting from `u8` to `i32` pads
@@ -106,6 +106,9 @@
 ///
 /// When casting between float and integer types, Rust performs rounding
 /// towards zero. The complete rules can be found in [the Rust Reference].
+/// 
+/// Cast is only allowed between certain primitive types. For more complex type 
+/// conversions, we'll cover them later.
 ///
 /// ### Quiz
 ///

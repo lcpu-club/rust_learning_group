@@ -19,6 +19,9 @@
 /// let ch = '🦀'; // Emoji
 /// ```
 ///
+/// Rust also guarantees that a `char` is a valid Unicode scalar value at compiler
+/// level.
+/// 
 /// Contrarily, Rust strings are not simply arrays of characters. They are
 /// represented as UTF-8 encoded bytes, enhancing memory efficiency and
 /// compatibility with byte-oriented systems. UTF-8 is a variable-width
@@ -58,13 +61,17 @@
 ///
 /// String literals are written using double quotes, resulting in a value of
 /// type `&str`. A `&str` can be converted into a `String` by invoking the
-/// `to_string` method. For example:
+/// `to_string` method. This would involve heap allocation and copying.
+///  For example:
 ///
 /// ```
 /// let s: &str = "Hello"; // A string literal
 /// let s: String = "Hello".to_string(); // A string literal converted to a String
 /// ```
-///
+/// 
+/// Rust also has multiline string literals, you may check them out in the 
+/// [Raw Literals in Rust Reference].
+/// 
 /// To obtain a `&str` from a `String`, you can either slice the `String` or
 /// use the `as_str` method to fetch a reference to the entire string, as shown
 /// below:
@@ -80,12 +87,28 @@
 ///
 /// In the above examples, `1..` signifies the range from the first byte to the
 /// string's end. Since slicing operates at the byte level, the slicing
-/// position must align with a character boundary; otherwise, an error will
-/// occur.
+/// position must align with a character boundary; otherwise, it will result in
+/// a panic. If you don't want to panic, you can use the `str::get` method to
+/// slice the string, getting a `None` if there's any boundary error.
+/// 
+/// ```
+/// let s: String = "Hello".to_string();
+/// let s: Option<&str> = s.get(1..); // Using the get method
+/// assert_eq!(s, Some("ello"));
+/// ```
 ///
 /// The `&` operator is utilized to fetch a reference to a value. We will delve
-/// into this operator in more depth in subsequent discussions.
+/// into this operator in more depth in subsequent discussions. 
+/// 
+/// You may wonder what is a `str` compared to `&str`. The `str` is a type that
+/// you cannot build a corresponding value by hand, but can be used to construct
+/// other types. We'll ignore it for now.
 ///
+/// You may also wonder why we can call the `get` method on a `String`, which is
+/// not a `str`. There are indeed some sneaky implicit type conversions going on!
+/// We'll discuss this in more detail in the future, but for now, you can safely call
+/// any method that is defined for `str` on a `String`.
+/// 
 /// ### Quiz: "NOT yes!"
 ///
 /// The "yes" command is a fascinating command-line utility that perpetually
@@ -134,6 +157,8 @@
 ///     println!("{}", result);
 /// }
 /// ```
+/// 
+/// [Raw Literals in Rust Reference]: https://doc.rust-lang.org/reference/tokens.html#raw-string-literals
 ///
 fn quiz() {
     let mut result = String::new();
