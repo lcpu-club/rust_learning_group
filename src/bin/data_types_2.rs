@@ -50,7 +50,7 @@
 /// assert_eq!(s.chars().nth(0), Some('你')); // Indexing at the character level
 /// ```
 ///
-/// Rust provides two primary types for handling strings: `&str` and `String`.
+/// Rust provides two types for handling strings: `&str` and `String`.
 /// The `&str` type corresponds to an immutable reference to a string slice,
 /// while `String` denotes a growable, heap-allocated string. For those
 /// familiar with C++, `&str` is similar to `const char*`, and `String` is
