@@ -100,8 +100,30 @@
 /// ```
 ///
 /// Functions that may mutate their arguments necessitate those arguments to be
-/// declared as mutable. Fortunately, Rust's compiler will remind you to
-/// declare a mutable variable when necessary, preventing potential oversights.
+/// declared as mutable. Notice that by adding the `mut` keyword to the
+/// function's formal argument, the function can now assign a new value to the
+/// formal argument, but won't be able to modify the actual argument in the caller.
+/// Do not confuse this with a mutable reference `&mut T`!
+///
+/// ```rust
+/// fn add_one(mut x: i32) -> i32 {
+///   //       ^^^
+///   x += 1; // Adding `mut` enables us to modify `x`
+///   x
+/// }
+///
+/// fn main() {
+///   let x = 1;
+///   let y = add_one(x);
+///   assert_eq!(x, 1); // x is unchanged!
+/// }
+/// ```
+///
+/// Fortunately, Rust's compiler will remind you to change a variable to mutable
+/// when necessary, or change an untouched mutable variable to an immutable one,
+/// preventing potential oversights. However it's worth noting that changing the
+/// variable's mutability *won't* change the variable's type, unlike `const`
+/// in C++.
 ///
 /// Mutability is a crucial aspect of Rust's memory model. The discussion here
 /// merely scratches the surface of this concept, and there's much more to
